@@ -85,7 +85,7 @@ unittest(test_positions)
     int16_t y = random(180);
     assertTrue(radar.setPosition(pos, x, y));
     int16_t a, b;
-    assertTrue(radar.getPosition(pos, &a, &b));
+    assertTrue(radar.getPosition(pos, a, b));
     assertEqual(x, a);
     assertEqual(y, b);
   }
