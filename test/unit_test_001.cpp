@@ -1,0 +1,104 @@
+//
+//    FILE: unit_test_001.cpp
+//  AUTHOR: Rob Tillaart
+//    DATE: 2021-01-07
+// PURPOSE: unit tests for the RADAR class
+//          https://github.com/RobTillaart/RADAR
+//          https://github.com/Arduino-CI/arduino_ci/blob/master/REFERENCE.md
+//
+
+// supported assertions
+// ----------------------------
+// assertEqual(expected, actual);               // a == b
+// assertNotEqual(unwanted, actual);            // a != b
+// assertComparativeEquivalent(expected, actual);    // abs(a - b) == 0 or (!(a > b) && !(a < b))
+// assertComparativeNotEquivalent(unwanted, actual); // abs(a - b) > 0  or ((a > b) || (a < b))
+// assertLess(upperBound, actual);              // a < b
+// assertMore(lowerBound, actual);              // a > b
+// assertLessOrEqual(upperBound, actual);       // a <= b
+// assertMoreOrEqual(lowerBound, actual);       // a >= b
+// assertTrue(actual);
+// assertFalse(actual);
+// assertNull(actual);
+
+// // special cases for floats
+// assertEqualFloat(expected, actual, epsilon);    // fabs(a - b) <= epsilon
+// assertNotEqualFloat(unwanted, actual, epsilon); // fabs(a - b) >= epsilon
+// assertInfinity(actual);                         // isinf(a)
+// assertNotInfinity(actual);                      // !isinf(a)
+// assertNAN(arg);                                 // isnan(a)
+// assertNotNAN(arg);                              // !isnan(a)
+
+#include <ArduinoUnitTests.h>
+
+#define assertEqualFloat(arg1, arg2, arg3)  assertOp("assertEqualFloat", "expected", fabs(arg1 - arg2), compareLessOrEqual, "<=", "actual", arg3)
+// #define assertEqualINF(arg)  assertOp("assertEqualINF", "expected", INFINITY, compareEqual, "==", "actual", arg)
+// #define assertEqualNAN(arg)  assertOp("assertEqualNAN", "expected", true, compareEqual, "==", "actual", isnan(arg))
+
+
+#include "Arduino.h"
+#include "RADAR.h"
+
+
+
+unittest_setup()
+{
+}
+
+unittest_teardown()
+{
+}
+
+/*
+unittest(test_new_operator)
+{
+  assertEqualINF(exp(800));
+  assertEqualINF(0.0/0.0);
+  assertEqualINF(42);
+  
+  assertEqualNAN(INFINITY - INFINITY);
+  assertEqualNAN(0.0/0.0);
+  assertEqualNAN(42);
+}
+*/
+
+unittest(test_constructor)
+{
+  fprintf(stderr, "VERSION: %s\n", RADAR_LIB_VERSION);
+
+  RADAR radar(10, 11);
+
+  assertEqual(10, radar.getMaxPositions());
+
+  radar.setPanPerSecond(100);
+  assertEqualFloat(100, radar.getPanPerSecond(), 0.0001);
+  radar.setTiltPerSecond(100);
+  assertEqualFloat(100, radar.getTiltPerSecond(), 0.0001);
+
+  assertEqual(1, 1);
+}
+
+
+unittest(test_positions)
+{
+  RADAR radar(10, 11);
+
+  assertEqual(10, radar.getMaxPositions());
+
+  for (int pos = 0; pos < 10; pos++)
+  {
+    fprintf("%d\t", pos);
+    int x = random(360);
+    int y = random(180);
+    assertTrue(radar.setPosition(pos, x, y);
+    int a, b;
+    assertTrue(radar.getPosition, a, b);
+    assertEqual(x, a);
+    assertEqual(y, b);
+  }
+}
+
+
+unittest_main()
+
+// --------
