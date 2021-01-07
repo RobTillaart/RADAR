@@ -90,9 +90,9 @@ unittest(test_positions)
     fprintf(stderr, "%d\t", pos);
     int x = random(360);
     int y = random(180);
-    assertTrue(radar.setPosition(pos, x, y);
+    assertTrue(radar.setPosition(pos, x, y));
     int a, b;
-    assertTrue(radar.getPosition, a, b);
+    assertTrue(radar.getPosition(pos, a, b));
     assertEqual(x, a);
     assertEqual(y, b);
   }
