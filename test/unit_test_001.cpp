@@ -87,7 +87,7 @@ unittest(test_positions)
 
   for (int pos = 0; pos < 10; pos++)
   {
-    fprintf("%d\t", pos);
+    fprintf(stderr, "%d\t", pos);
     int x = random(360);
     int y = random(180);
     assertTrue(radar.setPosition(pos, x, y);
