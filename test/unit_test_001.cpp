@@ -69,8 +69,6 @@ unittest(test_constructor)
   assertEqualFloat(100, radar.getPanPerSecond(), 0.0001);
   radar.setTiltPerSecond(100);
   assertEqualFloat(100, radar.getTiltPerSecond(), 0.0001);
-
-  assertEqual(1, 1);
 }
 
 
@@ -83,10 +81,10 @@ unittest(test_positions)
   for (int pos = 0; pos < 10; pos++)
   {
     fprintf(stderr, "%d\t", pos);
-    int x = random(360);
-    int y = random(180);
+    int16_t x = random(360);
+    int16_t y = random(180);
     assertTrue(radar.setPosition(pos, x, y));
-    int a, b;
+    int16_t a, b;
     assertTrue(radar.getPosition(pos, &a, &b));
     assertEqual(x, a);
     assertEqual(y, b);
