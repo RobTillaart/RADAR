@@ -5,6 +5,7 @@
 // PURPOSE: Arduino library for a pan tilt radar.
 //     URL: https://github.com/RobTillaart/RADAR
 //
+//  HISTORY
 //  0.1.00  2013-09-30  (?) outline
 //  0.1.01  2015-03-06  updated some code, still not functional
 //  0.1.2   2017-07-16  refactor & review
@@ -100,29 +101,29 @@ void RADAR::gotoPanTilt(const int16_t pan, const int16_t tilt)
 }
 
 
-bool RADAR::setPosition(const uint8_t n, const int16_t pan, const int16_t tilt)
+bool RADAR::setPosition(const uint8_t index, const int16_t pan, const int16_t tilt)
 {
-  if (n >= RADAR_POSITIONS) return false;
-  _panArray[n] = pan;
-  _tiltArray[n] = tilt;
+  if (index >= RADAR_POSITIONS) return false;
+  _panArray[index] = pan;
+  _tiltArray[index] = tilt;
   return true;
 }
 
 
-bool RADAR::getPosition(const uint8_t n, int16_t & pan, int16_t & tilt)
+bool RADAR::getPosition(const uint8_t index, int16_t & pan, int16_t & tilt)
 {
-  if (n >= RADAR_POSITIONS) return false;
-  pan = _panArray[n];
-  tilt = _tiltArray[n];
+  if (index >= RADAR_POSITIONS) return false;
+  pan = _panArray[index];
+  tilt = _tiltArray[index];
   return true;
 }
 
 
-bool RADAR::gotoPosition(const uint8_t n)
+bool RADAR::gotoPosition(const uint8_t index)
 {
-  if (n >= RADAR_POSITIONS) return false;
-  gotoPan(_panArray[n]);
-  gotoTilt(_tiltArray[n]);
+  if (index >= RADAR_POSITIONS) return false;
+  gotoPan(_panArray[index]);
+  gotoTilt(_tiltArray[index]);
   return true;
 }
 
@@ -157,7 +158,8 @@ uint32_t RADAR::ping(const int16_t pan, const int16_t tilt)
 }
 // PRIVATE
 
-// TODO distill private parts (getPan and getTilt share a lot
+// TODO distil private parts (getPan and getTilt share a lot
 
 
 // -- END OF FILE --
+
