@@ -61,7 +61,7 @@ unittest(test_new_operator)
 
 unittest(test_constructor)
 {
-  fprintf(stderr, "VERSION: %s\n", RADAR_LIB_VERSION);
+  fprintf(stderr, "VERSION: %s\n", (char *) RADAR_LIB_VERSION);
 
   RADAR radar(10, 11);
 
