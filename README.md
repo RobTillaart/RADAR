@@ -85,7 +85,7 @@ See examples
 ## Future
 
 - improve documentation.
-- test more (e.g. contiuous servo versus 180 servo).
+- test more (e.g. continuous servo versus 180 servo).
 - add sketches.
 - remember lastPing (angle pan tilt).
 - check TODO's in code.
