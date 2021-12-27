@@ -1,7 +1,7 @@
 //
 //    FILE: radar.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.5
+// VERSION: 0.1.6
 // PURPOSE: Arduino library for a pan tilt radar.
 //     URL: https://github.com/RobTillaart/RADAR
 //
@@ -10,8 +10,9 @@
 //  0.1.01  2015-03-06  updated some code, still not functional
 //  0.1.2   2017-07-16  refactor & review
 //  0.1.3   2020-07-06  refactor, clean up and some documentation
-//  0.1.4   2021-01-07  arduino-ci, unit-test
-//  0.1.5   2021-05-27  fix arduino-lint
+//  0.1.4   2021-01-07  Arduino-CI, unit-test
+//  0.1.5   2021-05-27  fix Arduino-lint
+//  0.1.6   2021-12-27  Update library.json, readme, license, minor edits
 
 
 #include "radar.h"
@@ -61,7 +62,7 @@ int16_t RADAR::getPan()
   uint32_t movement = round(duration * _panPerSecond * 0.001);
   if ( abs(_pan - _prevPan) <= movement) return _pan;
 
-  // else estimate PAN by linear interpolation 
+  // else estimate PAN by linear interpolation
   if (_pan > _prevPan) return _prevPan + movement;
   return _prevPan - movement;
 }
@@ -88,8 +89,8 @@ int16_t RADAR::getTilt()
   uint32_t movement = round(duration * _tiltPerSecond * 0.001);
   if (abs(_tilt - _prevTilt) <= movement) return _tilt;
 
-  // estimate TILT by linear interpolation 
-  if (_tilt > _prevTilt) return _prevTilt + movement;  
+  // estimate TILT by linear interpolation
+  if (_tilt > _prevTilt) return _prevTilt + movement;
   return _prevTilt - movement;
 }
 
