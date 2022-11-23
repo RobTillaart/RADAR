@@ -84,11 +84,17 @@ See examples
 
 ## Future
 
+#### must
 - improve documentation.
+
+#### should
 - test more (e.g. continuous servo versus 180 servo).
 - add sketches.
 - remember lastPing (angle pan tilt).
 - check TODO's in code.
+- move code from .h to .cpp
+
+#### could
 - single servo radar (Pan only) as derived class.
 - dynamic allocation of position arrays.
 
