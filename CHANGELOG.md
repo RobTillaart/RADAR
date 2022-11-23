@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.1.7] - 2022-11-23
 - add changelog.md
-- add RP2040 to build-CI  (commented as non AVR is not supported yet)
+- add RP2040 to build-CI
 - fix keywords.txt
 - minor edit readme.md
 - minor edit unit test
